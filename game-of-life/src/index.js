@@ -9,20 +9,20 @@ import { FaPlay, FaPause, FaRandom, FaTrash, FaStopwatch, FaSeedling } from "rea
 
 //Creates Cell component
 
-class Box extends React.Component {
+class Cell extends React.Component {
 
-  // Defines an individual selectBox function for this component
-  selectBox = () => {
-    this.props.selectBox(this.props.row, this.props.col);
+  // Defines an individual selectCell function for this component
+  selectCell = () => {
+    this.props.selectCell(this.props.row, this.props.col);
   }
 
   // renders the cell component
   render(){
     return(
       <div
-        className={this.props.boxClass}
+        className={this.props.CellClass}
         id={this.props.id}
-        onClick={this.selectBox}
+        onClick={this.selectCell}
       />
     );
   }
@@ -35,21 +35,21 @@ class Grid extends React.Component {
     //Multiplies the amount of columns in grid by the width of the cells
     const width = (this.props.cols * 18) + 1;
     var rowsArr = [];
-    // Nested for loop to generate rows and columns in box class, could use map but this runs quicker?
-    var boxClass = "";
+    // Nested for loop to generate rows and columns in Cell class, could use map but this runs quicker?
+    var CellClass = "";
     for (var x = 0; x < this.props.rows; x++) {
       for (var y = 0; y < this.props.cols; y++){
-        let boxId = x + "_" + y;
-        // Ternerary statement to check if the Box is dead or alive
-        boxClass = this.props.gridFull[x][y] ? "cell alive" : "cell dead";
+        let CellId = x + "_" + y;
+        // Ternerary statement to check if the Cell is dead or alive
+        CellClass = this.props.gridFull[x][y] ? "cell alive" : "cell dead";
         rowsArr.push(
-          <Box
-            boxClass={boxClass}
-            key={boxId}
-            boxId={boxId}
+          <Cell
+            CellClass={CellClass}
+            key={CellId}
+            CellId={CellId}
             row={x}
             col={y}
-            selectBox={this.props.selectBox}
+            selectCell={this.props.selectCell}
           />
         );
       }
@@ -103,7 +103,7 @@ class Main extends React.Component{
 
   // Updates array with cells that have been selected and set their state to true or 'alive'
 
-  selectBox = (row, col) => {
+  selectCell = (row, col) => {
       let gridCopy = arrayClone(this.state.gridFull);
       gridCopy[row][col] = !gridCopy[row][col];
       this.setState({
@@ -223,7 +223,7 @@ componentDidMount(){
         gridFull={this.state.gridFull}
         rows={this.rows} 
         cols={this.cols}
-        selectBox={this.selectBox}
+        selectCell={this.selectCell}
         />
         <Buttons className="buttons-container"
           playButton={this.playButton}
@@ -252,8 +252,4 @@ root.render(
     <Main />
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

@@ -1,0 +1,136 @@
+/* Global Styles */ 
+
+/* Default style overhauls */
+
+html{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fonts */
+
+h1,h2,h3,h3,h5,h6{
+  font-family: 'Lora', serif;
+}
+
+p{
+  font-family: 'Raleway', sans-serif;
+}
+
+/* Container to center the content */
+
+.content-center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: url(img/floral-background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Default styles for a cell */
+
+.cell{
+  width: 17px;
+  height: 17px;
+  border: 1px solid #709775;
+  margin-left: -1px;
+  margin-bottom: -1px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Hover effect for when a user is manually toggling cells to dead or alive states */
+
+.cell:hover{
+    background-color: #284b2c;
+}
+
+/* Dead and alive styles for cells, transition for fancy fade */ 
+
+.alive{
+    background-color: #709775;
+    transition: background-color 200ms ease;
+}
+
+.dead{
+    background-color: #F9F3DF;
+    transition: background-color 200ms ease;
+}
+
+/* Styles for the grid */ 
+
+.grid{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cell-grid{
+  width: 150px;
+  margin: auto;
+}
+
+/* Typography styles */
+
+.game-of-life-title{
+  font-size: 32px;
+}
+
+/* Styles for buttons and buttons container */
+
+.buttons-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.buttons-container button{
+  margin: 10px;
+  width: min-content;
+  white-space: nowrap;
+  height: 30px;
+  min-width: 100px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #F9F3DF;
+  color: #131313;
+  transition: background 200ms ease;
+}
+
+.buttons-container button svg{
+  margin-left: 5px;
+  transition: transform 200ms ease;
+}
+
+.buttons-container button:hover svg{
+  transform: translatex(2px);
+  transition: transform 200ms ease;
+}
+
+.buttons-container button:hover{
+  background: #eee6cb;
+  transition: background 200ms ease;
+}
